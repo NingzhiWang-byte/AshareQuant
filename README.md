@@ -87,12 +87,9 @@ The script generates two Excel files:
 ## Disclaimer
 This tool is for educational and research purposes only. It is not financial advice. Always do your own research and consult with a financial advisor before making investment decisions.
 
-## License
-[MIT License](LICENSE)
 
 ## Contributing
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/stock-selection-tool/issues) if you want to contribute.
+Contributions, issues, and feature requests are welcome. Feel free to check [[issues page](https://github.com/yourusername/stock-selection-tool/issues)](https://github.com/NingzhiWang-byte/AshareQuant) if you want to contribute.
 
 ## Author
-[Your Name]
-
+Ningzhi Wang
