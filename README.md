@@ -1,66 +1,98 @@
-# AshareQuant
-Stock Trading Analysis and Strategy Framework
+# Stock Selection and Analysis Tool
 
-This repository provides a robust framework for analyzing stock trading data and implementing trading strategies using Python. It utilizes the Pandas and NumPy libraries to facilitate data manipulation, analysis, and decision-making based on historical stock data.
+## Overview
+This project is a comprehensive stock selection and analysis tool designed for the Chinese stock market. It implements various strategies to select stocks based on technical indicators and historical performance, and then analyzes their future performance.
 
-Key Features:
-1. Data Import and Preprocessing:
+## Features
+- Data preprocessing and manipulation using pandas and numpy
+- Technical analysis including Moving Averages (MA5, MA10, MA20)
+- Volume analysis and change calculation
+- Customizable stock selection criteria
+- Performance backtesting
+- Future performance prediction (up to D+20)
 
-2. Import stock market data using the efinance library.
-Clean and preprocess data, including handling missing values and converting data types for accurate analysis.
-Logarithmic Growth Calculations:
+## Requirements
+- Python 3.x
+- pandas
+- numpy
+- efinance
 
-3. Calculate logarithmic growth for stock closing prices and trading volumes using the get_log_growth and get_volume_change functions.
-These metrics help assess performance trends over time.
-Data Filtering:
+## Installation
+1. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/stock-selection-tool.git
+   cd stock-selection-tool
+   ```
 
-4. Filter stock data based on specific dates and business days using functions like get_filtered_df and get_filtered_df_after.
-Retrieve today's stock data with the get_today function.
-Growth and Volume Analysis:
+2. Install required packages:
+   ```
+   pip install pandas numpy efinance
+   ```
 
-5. Functions to compute total growth over specified periods for both prices and volumes (get_growth, get_vol_growth).
-Calculate average trading volume with get_average_vol.
-Trading Conditions Evaluation:
+## Usage
+1. Prepare your data:
+   - Ensure you have historical stock data in the correct format
+   - The script uses `efinance` to fetch real-time data
 
-6. Assess various trading conditions, such as price increases over recent days, volume changes, and turnover rates.
-Functions include whether_price_rise_in_last_n_days, whether_trade_vol_rise_in_last_n_days, and whether_turnover_rate_larger_than.
-Portfolio Return Calculation:
+2. Set your parameters:
+   - Adjust the `start_tactic_date` and `end_tactic_date` in the script
+   - Modify the selection criteria parameters (e.g., `x1`, `x2`, `a1`, `a2`, `a3`, `a4`)
 
-7. Evaluate potential returns on investments with the get_portfolio_return function, which calculates the return based on selected stocks over a defined period.
-Strategy Implementation:
+3. Run the script:
+   ```
+   python stock_selection_tool.py
+   ```
 
-8. The framework allows users to define and implement trading strategies based on specific criteria, such as price thresholds and volume conditions.
-The strategy is executed over a range of working days, filtering stocks that meet predefined conditions.
+4. Check the output:
+   - `portfolio_return.xlsx`: Contains the daily selected stocks and their returns
+   - `result_df.xlsx`: Detailed analysis of selected stocks including future performance
 
+## Key Components
 
-Output and Reporting:
+### Data Preprocessing
+- `get_log_growth`: Calculates logarithmic growth of stock prices
+- `get_volume_change`: Calculates volume changes and logarithmic growth
+- `get_volatility`: Calculates price volatility
+- `get_pillar_height`: Calculates the height of price candlesticks
+- `get_line_height`: Calculates the upper shadow of candlesticks
 
-Results are compiled into a DataFrame, which can be exported to Excel for further analysis or reporting.
-The repository includes functionality to track execution time for performance optimization.
+### Stock Selection
+The tool selects stocks based on several criteria:
+1. MA5 > MA10 > MA20
+2. Current price relative to MA5
+3. Lowest price relative to MA5
+4. Volatility and candlestick patterns
+5. Recent price increases
 
-Usage Instructions:
-1. Setup: Ensure you have the required libraries installed: pandas, numpy, efinance, and any other dependencies.
-2. Data Loading: Load stock data using the provided functions. Ensure that the data is cleaned and preprocessed to fit the expected format.
-3. Define Strategy Parameters: Set your trading strategy parameters, such as thresholds for price changes and volume conditions.
-4. Run Analysis: Execute the analysis by running the main script. The script will filter stocks based on the defined
-strategy and output the results.
+### Performance Analysis
+- Calculates returns for various holding periods (D+1 to D+20)
+- Computes average portfolio return
 
+## Customization
+You can customize the selection criteria by modifying the parameters in the script:
+- `x1`, `x2`: Related to volatility and candlestick patterns
+- `a1`, `a2`, `a3`: Price levels relative to moving averages
+- `a4`: Threshold for recent price increases
 
-Review Results:
+## Output
+The script generates two Excel files:
+1. `portfolio_return.xlsx`: Daily selected stocks and overall portfolio performance
+2. `result_df.xlsx`: Detailed analysis of each selected stock, including future performance up to 20 days
 
-Check the generated Excel file for selected stocks, their performance metrics, and any other relevant information.
+## Notes
+- This tool is designed for the Chinese stock market and uses Chinese stock codes (starting with 00, 30, 60)
+- The script includes handling for Chinese market holidays
+- Backtesting is performed from the start date to the end date specified
 
-StockScreen3:
-This repository contains a backtesting framework designed for stock trading strategies, focusing on analyzing stock performance over a specified period. The backtest runs from December 1, 2022, to November 21, 2023, allowing users to evaluate the effectiveness of various trading tactics based on historical data.
+## Disclaimer
+This tool is for educational and research purposes only. It is not financial advice. Always do your own research and consult with a financial advisor before making investment decisions.
 
-Key Features:
-Date Configuration: Users can set the start and end dates for the backtest.
-Working Days Calculation: Generates a list of working days while excluding national holidays.
-Trading Strategy Parameters: Users can customize parameters such as volume thresholds, price changes, and turnover rates to refine their strategy.
-Data Analysis: The framework analyzes stock performance metrics, including daily and multi-day growth percentages.
-Results Compilation: The results are compiled into a DataFrame and exported to Excel for further analysis, including average returns and selected stock codes.
-Usage:
-1. Adjust the start_tactic_date and end_tactic_date variables to set your desired testing period.
-2. Modify the trading strategy parameters as needed to fit your investment approach.
-3. Run the script to execute the backtest and generate performance reports.
-This repository is ideal for quantitative analysts and traders looking to backtest and optimize their stock trading strategies using historical data.
+## License
+[MIT License](LICENSE)
+
+## Contributing
+Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/stock-selection-tool/issues) if you want to contribute.
+
+## Author
+[Your Name]
+
